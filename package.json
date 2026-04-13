@@ -1,0 +1,37 @@
+{
+  "name": "contafacil-tools",
+  "displayName": "ContaFácil Tools",
+  "version": "0.1.0",
+  "description": "Ferramentas para contadores e advogados: export de tabelas, download em lote e mais nos portais do governo federal.",
+  "scripts": {
+    "dev": "plasmo dev",
+    "build": "plasmo build",
+    "package": "plasmo package"
+  },
+  "dependencies": {
+    "plasmo": "0.90.5",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  },
+  "devDependencies": {
+    "@types/chrome": "0.0.268",
+    "@types/react": "18.2.0",
+    "@types/react-dom": "18.2.0",
+    "typescript": "5.3.3"
+  },
+  "manifest": {
+    "host_permissions": [
+      "https://cav.receita.fazenda.gov.br/*",
+      "https://www.receita.fazenda.gov.br/*",
+      "https://servicos.receita.fazenda.gov.br/*",
+      "https://esocial.fazenda.gov.br/*",
+      "https://www8.receita.fazenda.gov.br/*",
+      "https://portal.esocial.gov.br/*"
+    ],
+    "permissions": [
+      "storage",
+      "notifications",
+      "downloads"
+    ]
+  }
+}
