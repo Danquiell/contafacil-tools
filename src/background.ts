@@ -8,8 +8,6 @@
 
 export {}
 
-const CHECK_INTERVAL_MS = 30 * 60 * 1000 // 30 minutos
-
 async function isLicenseValid(): Promise<boolean> {
   return new Promise((resolve) => {
     chrome.storage.local.get(["licenseValid"], (result) => {
@@ -60,9 +58,11 @@ chrome.runtime.onMessage.addListener((message, _sender, _sendResponse) => {
     getStoredNotificationCount().then(async (prev) => {
       if (count > prev) {
         const diff = count - prev
+        const manifest = chrome.runtime.getManifest()
+        const iconPath = manifest.icons?.["128"] ?? ""
         chrome.notifications.create({
           type: "basic",
-          iconUrl: "assets/icon.png",
+          iconUrl: chrome.runtime.getURL(iconPath),
           title: "ContaFácil Tools — Nova notificação fiscal",
           message: `${diff} nova(s) intimação(ões) ou pendência(s) detectada(s) no portal.`,
           priority: 2
